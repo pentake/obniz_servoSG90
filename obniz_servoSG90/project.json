@@ -1,0 +1,400 @@
+{
+    "name": "servo",
+    "components": [
+        {
+            "name": "/Main",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "cac61701-6440-4751-afb6-d62cefad0921",
+                        "fromProperty": "loaded",
+                        "toId": "5683e099-5872-ce3b-23c1-bc54dca4ac02",
+                        "toProperty": "scriptLoaded"
+                    },
+                    {
+                        "fromId": "1826a08b-7bd3-dc3c-e67d-e5c70e26370f",
+                        "fromProperty": "Click",
+                        "toId": "5683e099-5872-ce3b-23c1-bc54dca4ac02",
+                        "toProperty": "rotateRight"
+                    },
+                    {
+                        "fromId": "b40b2795-e266-fdd5-1275-4a5f337773f4",
+                        "fromProperty": "Click",
+                        "toId": "5683e099-5872-ce3b-23c1-bc54dca4ac02",
+                        "toProperty": "rotateLeft"
+                    },
+                    {
+                        "fromId": "d6ee1e7a-304f-389c-3785-df2a88551493",
+                        "fromProperty": "Click",
+                        "toId": "5683e099-5872-ce3b-23c1-bc54dca4ac02",
+                        "toProperty": "off"
+                    },
+                    {
+                        "fromId": "4c2ef2cb-7bcc-d605-6d36-897335cddcfd",
+                        "fromProperty": "Click",
+                        "toId": "5683e099-5872-ce3b-23c1-bc54dca4ac02",
+                        "toProperty": "on"
+                    },
+                    {
+                        "fromId": "7d8d8e95-df7c-7d9d-15b9-4f284fe320aa",
+                        "fromProperty": "index",
+                        "toId": "0500722f-6735-211d-586d-2a61236839b7",
+                        "toProperty": "index"
+                    },
+                    {
+                        "fromId": "d6ee1e7a-304f-389c-3785-df2a88551493",
+                        "fromProperty": "Click",
+                        "toId": "7d8d8e95-df7c-7d9d-15b9-4f284fe320aa",
+                        "toProperty": "input 0"
+                    },
+                    {
+                        "fromId": "cac61701-6440-4751-afb6-d62cefad0921",
+                        "fromProperty": "loaded",
+                        "toId": "7d8d8e95-df7c-7d9d-15b9-4f284fe320aa",
+                        "toProperty": "input 1"
+                    },
+                    {
+                        "fromId": "4c2ef2cb-7bcc-d605-6d36-897335cddcfd",
+                        "fromProperty": "Click",
+                        "toId": "7d8d8e95-df7c-7d9d-15b9-4f284fe320aa",
+                        "toProperty": "input 1"
+                    },
+                    {
+                        "fromId": "1826a08b-7bd3-dc3c-e67d-e5c70e26370f",
+                        "fromProperty": "Click",
+                        "toId": "7d8d8e95-df7c-7d9d-15b9-4f284fe320aa",
+                        "toProperty": "input 2"
+                    },
+                    {
+                        "fromId": "b40b2795-e266-fdd5-1275-4a5f337773f4",
+                        "fromProperty": "Click",
+                        "toId": "7d8d8e95-df7c-7d9d-15b9-4f284fe320aa",
+                        "toProperty": "input 3"
+                    },
+                    {
+                        "fromId": "0500722f-6735-211d-586d-2a61236839b7",
+                        "fromProperty": "currentValue",
+                        "toId": "86ffe6db-0d9a-5120-8bad-df5713d81c25",
+                        "toProperty": "text"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "cac61701-6440-4751-afb6-d62cefad0921",
+                        "type": "Script Downloader",
+                        "x": -4.975175212081979,
+                        "y": 486.8038948131292,
+                        "parameters": {
+                            "input 0": "https://unpkg.com/obniz@3.7.1/obniz.js"
+                        },
+                        "ports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "5683e099-5872-ce3b-23c1-bc54dca4ac02",
+                        "type": "Javascript2",
+                        "x": -279.5001710786641,
+                        "y": 191.5806970943628,
+                        "parameters": {
+                            "code": "script({\n\tinputs:{\n\t    obnizId:'string',\n\t},\n\t\n\toutputs:{\n\t    ExampleOutput:'string',\n\t},\n\t\n\tobniz:{},\n\tservo:{},\n\t\n\tsignals:{\n\t\tscriptLoaded:function() {\n\t\t    obniz = new Obniz(this.inputs.obnizId);\n            obniz.onconnect = async function() {\n                obniz.display.print(\"Hello Noodl！\");\n                servo = obniz.wired(\"ServoMotor\", {gnd:0,vcc:1,signal:2});\n                servo.angle(90.0); // 初期位置\n            };\n\t\t},\n\t\trotateRight:function(){\n            servo.angle(180.0);\n\t\t},\n\t\trotateLeft:function(){\n\t\t    servo.angle(10.0);\n\t\t},\n\t\toff:function(){\n\t\t    servo.off();\n\t\t},\n\t\ton:function(){\n\t\t    servo.on();\n\t\t    servo.angle(90.0); // 初期位置\n\t\t}\n\t},\n\n// \tchanged:{\n// \t\tmyNumber:function(value) { }\n// \t},\n\t\n// \tmethods:{\n// \t\taFunction:function(value) { }\n// \t}\n})\n",
+                            "obnizId": "2584-7771"
+                        },
+                        "ports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "5b003f6f-1996-dde3-d1bf-998ee7284f59",
+                        "type": "Mui Theme",
+                        "x": -66.71113863560447,
+                        "y": -159.9961214060359,
+                        "parameters": {
+                            "primary": "#EF8F45",
+                            "secondary": "#006394",
+                            "error": "#E8423A"
+                        },
+                        "ports": [],
+                        "children": [
+                            {
+                                "id": "eacc74e7-4dce-2baf-354b-8070e2b2b872",
+                                "type": "Group",
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {
+                                    "backgroundColor": "#FFFFFF",
+                                    "marginLeft": {
+                                        "value": 0,
+                                        "unit": "px"
+                                    },
+                                    "paddingLeft": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingTop": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "children": [
+                                    {
+                                        "id": "86ffe6db-0d9a-5120-8bad-df5713d81c25",
+                                        "type": "Text",
+                                        "label": "State",
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {
+                                            "justifyContent": "center",
+                                            "fontFamily": "noodl_modules/se-topp-material-ui/Roboto/Roboto-Light.ttf",
+                                            "text": ""
+                                        },
+                                        "ports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "852e1b41-c03b-9f04-43ad-029912642da2",
+                                        "type": "Mui List",
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {},
+                                        "ports": [],
+                                        "children": [
+                                            {
+                                                "id": "1826a08b-7bd3-dc3c-e67d-e5c70e26370f",
+                                                "type": "/List item",
+                                                "label": "Rotate right",
+                                                "x": 20,
+                                                "y": 46,
+                                                "parameters": {
+                                                    "primary text": "右に",
+                                                    "icon name": "rotate_right",
+                                                    "secondary text": "回って！"
+                                                },
+                                                "ports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "b40b2795-e266-fdd5-1275-4a5f337773f4",
+                                                "type": "/List item",
+                                                "label": "Rotate left",
+                                                "x": 20,
+                                                "y": 143,
+                                                "parameters": {
+                                                    "primary text": "左に",
+                                                    "icon name": "rotate_left",
+                                                    "secondary text": "回って！"
+                                                },
+                                                "ports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "d6ee1e7a-304f-389c-3785-df2a88551493",
+                                                "type": "/List item",
+                                                "label": "Off",
+                                                "x": 20,
+                                                "y": 240,
+                                                "parameters": {
+                                                    "primary text": "終わり",
+                                                    "icon name": "stop",
+                                                    "secondary text": ""
+                                                },
+                                                "ports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "4c2ef2cb-7bcc-d605-6d36-897335cddcfd",
+                                                "type": "/List item",
+                                                "label": "On",
+                                                "x": 20,
+                                                "y": 337,
+                                                "parameters": {
+                                                    "primary text": "再起動",
+                                                    "icon name": "play_arrow",
+                                                    "secondary text": ""
+                                                },
+                                                "ports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "0500722f-6735-211d-586d-2a61236839b7",
+                        "type": "String Selector",
+                        "x": 321.09801955804835,
+                        "y": 49.07276171597158,
+                        "parameters": {
+                            "input 0": "Off",
+                            "input 1": "On",
+                            "input 2": "右回り",
+                            "input 3": "左回り"
+                        },
+                        "ports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "7d8d8e95-df7c-7d9d-15b9-4f284fe320aa",
+                        "type": "Signal To Index",
+                        "x": 322.0474157191351,
+                        "y": 188.94820455629554,
+                        "parameters": {
+                            "startIndex": "input 0"
+                        },
+                        "ports": [],
+                        "children": []
+                    }
+                ]
+            }
+        },
+        {
+            "name": "/List item",
+            "id": "377e5e07-3609-d8b8-b4cf-f77c8d778b9c",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "e3320645-6415-96c1-fa66-a999acc2011c",
+                        "fromProperty": "icon name",
+                        "toId": "5c737c18-ccc5-9db5-b899-772bd97dd299",
+                        "toProperty": "icon"
+                    },
+                    {
+                        "fromId": "e3320645-6415-96c1-fa66-a999acc2011c",
+                        "fromProperty": "primary text",
+                        "toId": "835fed2e-88ef-df93-0a58-dbffc69ff174",
+                        "toProperty": "primary"
+                    },
+                    {
+                        "fromId": "e3320645-6415-96c1-fa66-a999acc2011c",
+                        "fromProperty": "secondary text",
+                        "toId": "835fed2e-88ef-df93-0a58-dbffc69ff174",
+                        "toProperty": "secondary"
+                    },
+                    {
+                        "fromId": "d8bbaa2e-c909-a7dc-d6aa-125168b7d4e6",
+                        "fromProperty": "onClick",
+                        "toId": "59707974-3adc-e5b7-d841-7da777588f56",
+                        "toProperty": "Click"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "e3320645-6415-96c1-fa66-a999acc2011c",
+                        "type": "Component Inputs",
+                        "x": 113.7095399185651,
+                        "y": 615.9808733491359,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "icon name",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            },
+                            {
+                                "name": "primary text",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 2
+                            },
+                            {
+                                "name": "secondary text",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 3
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "59707974-3adc-e5b7-d841-7da777588f56",
+                        "type": "Component Outputs",
+                        "x": 579.2079615112459,
+                        "y": 812.8662076870094,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Click",
+                                "plug": "input",
+                                "type": "*",
+                                "index": 0
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "78ac4333-1e88-08db-4265-3a3712a6c1aa",
+                        "type": "Mui List Item",
+                        "x": 331.6707328869344,
+                        "y": 522.2505897014478,
+                        "parameters": {
+                            "button": true,
+                            "divider": true
+                        },
+                        "ports": [],
+                        "children": [
+                            {
+                                "id": "c5ae719b-b522-48b8-85ae-1e7785f8729f",
+                                "type": "Mui List Item Icon",
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {},
+                                "ports": [],
+                                "children": [
+                                    {
+                                        "id": "5c737c18-ccc5-9db5-b899-772bd97dd299",
+                                        "type": "Mui Icon",
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {},
+                                        "ports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "835fed2e-88ef-df93-0a58-dbffc69ff174",
+                                "type": "Mui List Item Text",
+                                "x": 20,
+                                "y": 174,
+                                "parameters": {
+                                    "primary": "回る",
+                                    "secondary": "回るよ"
+                                },
+                                "ports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "d8bbaa2e-c909-a7dc-d6aa-125168b7d4e6",
+                                "type": "Group",
+                                "label": "Click",
+                                "x": 359.7573714011608,
+                                "y": 540.9581847159337,
+                                "parameters": {},
+                                "ports": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "settings": {
+        "htmlTitle": "Obniz"
+    },
+    "rootNodeId": "eacc74e7-4dce-2baf-354b-8070e2b2b872",
+    "version": "1",
+    "metadata": {}
+}
